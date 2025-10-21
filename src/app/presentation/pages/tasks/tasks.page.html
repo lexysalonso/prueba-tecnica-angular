@@ -1,0 +1,26 @@
+<mat-card class="task-page">
+  <mat-card-title class="task">Gestión de Tareas</mat-card-title>
+
+  <div class="filters">
+    <mat-form-field appearance="outline" class="filter-field">
+      <mat-label>Buscar</mat-label>
+      <input matInput [(ngModel)]="searchText"  (ngModelChange)="saveFilters()" placeholder="Buscar tarea">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="filter-field">
+      <mat-label>Estado</mat-label>
+      <mat-select [(ngModel)]="selectedStatus" (ngModelChange)="saveFilters()">
+        <mat-option value="Todos">Todos</mat-option>
+        <mat-option value="Pendiente">Pendiente</mat-option>
+        <mat-option value="En progreso">En progreso</mat-option>
+        <mat-option value="Completada">Completada</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button class="button-create" mat-raised-button color="primary" (click)="addTask()">+ Nueva Tarea</button>
+  </div>
+
+  <app-task-table [tasks]="tasks | taskFilter:searchText:selectedStatus" (edit)="editTask($event)" (remove)="deleteTask($event)">
+  </app-task-table>
+</mat-card>
+

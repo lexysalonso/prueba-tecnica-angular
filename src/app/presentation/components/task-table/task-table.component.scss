@@ -1,0 +1,58 @@
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+}
+
+.status {
+    padding: 4px 8px;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.status.pendiente {
+    background-color: #f44336;
+}
+
+.status.en {
+    background-color: #ff9800;
+}
+
+.status.completada {
+    background-color: #4caf50;
+}
+
+.actions {
+    display: flex;
+    gap: 4px;
+    padding: 10px
+}
+
+table.mat-table {
+    width: 100%;
+
+    th.mat-header-cell,
+    td.mat-cell {
+        padding: 8px 16px;
+        vertical-align: middle;
+        /* centra verticalmente */
+    }
+
+    .actions {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        /* centra horizontalmente los botones */
+    }
+
+    .status {
+        display: inline-block;
+        min-width: 80px;
+        /* opcional: para alinear mejor */
+        text-align: center;
+    }
+}

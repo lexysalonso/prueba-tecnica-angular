@@ -1,0 +1,55 @@
+<h2 mat-dialog-title class="dialog-title">
+  {{ data ? 'Editar Tarea' : 'Nueva Tarea' }}
+</h2>
+
+<div class="task-form-container">
+  <form [formGroup]="taskForm" (ngSubmit)="save()">
+
+    <!-- Fila 1: Título y Estado -->
+    <div class="form-row row-top">
+      <mat-form-field appearance="fill" class="title-field">
+        <mat-label>Título</mat-label>
+        <input matInput formControlName="title">
+        <mat-error *ngIf="taskForm.get('title')?.hasError('required')">
+          El título es requerido
+        </mat-error>
+        <mat-error *ngIf="taskForm.get('title')?.hasError('minlength')">
+          Mínimo 3 caracteres
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="status-field">
+        <mat-label>Estado</mat-label>
+        <mat-select formControlName="status">
+          <mat-option value="Pendiente">Pendiente</mat-option>
+          <mat-option value="En progreso">En progreso</mat-option>
+          <mat-option value="Completada">Completada</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Fila 2: Descripción -->
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Descripción</mat-label>
+        <textarea matInput formControlName="description" rows="3"></textarea>
+        <mat-error *ngIf="taskForm.get('description')?.hasError('required')">
+          La descripción es requerida
+        </mat-error>
+        <mat-error *ngIf="taskForm.get('description')?.hasError('minlength')">
+          Mínimo 5 caracteres
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- Fila 3: Botones centrados -->
+    <div class="form-row row-bottom">
+      <div class="dialog-actions">
+       <div></div>
+       <div><button mat-button type="button" (click)="close()">Cancelar</button>
+      <button mat-flat-button [disabled]="taskForm.invalid" color="primary" type="submit">Guardar</button></div>
+      </div>
+    </div>
+
+  </form>
+</div>

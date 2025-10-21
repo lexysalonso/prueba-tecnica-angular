@@ -1,0 +1,28 @@
+.task-page {
+    padding: 1.5rem;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.filter-field {
+    flex: 1 1 200px;
+}
+
+button {
+    height: 56px;
+}
+
+.task {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.button-create {
+    margin-bottom: 20px;
+}

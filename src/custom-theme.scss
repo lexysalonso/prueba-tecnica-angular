@@ -1,0 +1,50 @@
+@use '@angular/material' as mat;
+
+// Define tus temas claro y oscuro usando Material Design 3
+$light-theme: mat.define-theme((color: (theme-type: light,
+                primary: mat.$blue-palette,
+                tertiary: mat.$orange-palette,
+            )));
+
+$dark-theme: mat.define-theme((color: (theme-type: dark,
+                primary: mat.$blue-palette,
+                tertiary: mat.$orange-palette,
+            )));
+
+// Estilos globales (tema claro por defecto)
+:root {
+    @include mat.all-component-themes($light-theme);
+}
+
+// Tema oscuro cuando se aplica la clase .dark-theme
+.dark-theme {
+    @include mat.all-component-themes($dark-theme);
+}
+
+// Tema claro (por defecto)
+:root {
+    @include mat.all-component-themes($light-theme);
+
+    // Colores base del DOM
+    background-color: #f5f5f5;
+    color: #222;
+}
+
+
+.dark-theme {
+    @include mat.all-component-themes($dark-theme);
+
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+
+    a {
+        color: var(--md-sys-color-primary);
+    }
+
+    .card,
+    .header,
+    .content {
+        background-color: var(--md-sys-color-surface-container-highest);
+        color: var(--md-sys-color-on-surface);
+    }
+}
